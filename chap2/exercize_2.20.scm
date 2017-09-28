@@ -1,0 +1,7 @@
+(define (same-parity i . ns)
+  (define (same-parity-iter new old)
+    (cond ((null? old) (reverse new))
+          ((even? (- (car old) i))
+           (same-parity-iter (cons (car old) new) (cdr old)))
+          (else (same-parity-iter new (cdr old)))))
+  (same-parity-iter (list i) ns))
